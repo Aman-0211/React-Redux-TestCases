@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class HeadLine extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { header, desc } = this.props;
+    const { header, desc, tempArray } = this.props;
+
     if (!header) {
       return null;
     }
@@ -17,5 +19,19 @@ class HeadLine extends Component {
     );
   }
 }
+
+HeadLine.propTypes = {
+  header: PropTypes.string,
+  desc: PropTypes.string,
+  tempArray: PropTypes.arrayOf(
+    PropTypes.shape({
+      fName: PropTypes.string,
+      lName: PropTypes.string,
+      email: PropTypes.string,
+      age: PropTypes.number,
+      onlineStatus: PropTypes.bool,
+    })
+  ),
+};
 
 export default HeadLine;
